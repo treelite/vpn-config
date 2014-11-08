@@ -1,0 +1,28 @@
+#!/bin/sh
+
+export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
+VPNGW=`ip route show | grep '^default' | grep 'pptp-vpn' | sed -e 's/default via \([^ ]*\).*/\1/ ' | head -1`
+if [ $VPNGW == '' ]; then
+    exit 0
+fi
+
+if [ ! -e /tmp/vpngw ]; then
+    echo $VPNGW >> /tmp/vpngw
+fi
+
+##### Del default vpn route #####
+route del default gw $VPNGW
+
+##### begin custom route #####
+
+# Google DNS and OpenDNS
+route add -host 8.8.8.8 gw $VPNGW
+route add -host 8.8.4.4 gw $VPNGW
+route add -host 208.67.222.222 gw $VPNGW
+route add -host 208.67.220.220 gw $VPNGW
+
+# set route table vpn
+ip route add default dev pptp-vpn table gfw
+
+# connection marked 7 use vpn route table
+ip rule add fwmark 7 table gfw

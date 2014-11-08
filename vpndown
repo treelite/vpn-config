@@ -1,0 +1,13 @@
+#!/bin/sh
+
+export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
+
+OLDGW=`ip route show | grep '^default' | grep 'pppoe-wan' | sed -e 's/default via \([^ ]*\).*/\1/ ' | head -1`
+
+route add default gw $OLDGW
+
+rm /tmp/vpngw
+
+ip rule del table gfw
+
+ip route del default dev pptp-vpn table gfw
