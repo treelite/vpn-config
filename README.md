@@ -69,11 +69,13 @@ iptables -t mangle -A fwmark -m set --match-set vpn dst -j MARK --set-mark 7
 
 在建立VPN连接时让所有已被标记为需要翻墙的请求使用专用的VPN路由表
 
-拷贝仓库中的[vpnup](vpnup)文件到`/etc/ppp/ip-up.d/`目录下，并执行`chmod a+x vpnup`使`vpnup`文件具有可执行权限
+* 拷贝仓库中的[vpnup](vpnup)文件到`/etc/ppp/ip-up.d/`目录下
+* 执行`chmod a+x vpnup`使`vpnup`文件具有可执行权限
 
 然后在VPN断开时不再使用专用的VPN路由表
 
-拷贝仓库中的[vpndown](vpndown)文件到`/etc/ppp/ip-down.d/`目录下，并执行`chmod a+x vpndown`使`vpndown`文件具有可执行权限
+* 拷贝仓库中的[vpndown](vpndown)文件到`/etc/ppp/ip-down.d/`目录下
+* 执行`chmod a+x vpndown`使`vpndown`文件具有可执行权限
 
 ### Step 6
 
