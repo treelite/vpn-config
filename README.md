@@ -81,7 +81,7 @@ iptables -t mangle -A fwmark -m set --match-set vpn dst -j MARK --set-mark 7
 
 `0.7.6`以上的版本改变了VPN建立时相关脚本的逻辑，需要额外进行两处设置
 
-* 拷贝仓库中的[70-vpn](70vpn)文件至`/etc/hotplug.d/iface/`目录覆盖原文件，并执行`chmod a+x 70-vpn`命令
+* 拷贝仓库中的[70-vpn](70-vpn)文件至`/etc/hotplug.d/iface/`目录覆盖原文件，并执行`chmod a+x 70-vpn`命令
 * 执行`chmod a-x /etc/ppp/ppp.d/vpn-up`
 
 ### Step 7
