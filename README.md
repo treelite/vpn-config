@@ -63,7 +63,7 @@ iptables -t mangle -A fwmark -m set --match-set vpn dst -j MARK --set-mark 7
 200 gfw
 ```
 
-新版的ROOM(0.8.74)已经默认有一个叫`vpn`的路由表了，所以直接取个另外的名字，囧...
+新版的Rom(0.8.74)已经默认有一个叫`vpn`的路由表了，所以得取个另外的名字，囧...
 
 ### Step 5
 
@@ -77,7 +77,7 @@ iptables -t mangle -A fwmark -m set --match-set vpn dst -j MARK --set-mark 7
 
 ### Step 6
 
-如果`MiWiFi`的`room`版本在`0.7.6`以下，可以跳过此步，直接前往[Step 7](#step7)
+如果`MiWiFi`的Rom版本在`0.7.6`以下，可以跳过此步，直接前往[Step 7](#step7)
 
 `0.7.6`以上的版本改变了VPN建立时相关脚本的逻辑，需要额外进行两处设置
 
